@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_kategori');
             $table->string('name');
-            $table->string('deskripsi')->nullable();
+            $table->text('deskripsi')->nullable();
             $table->string('harga');
             $table->string('file'); // Gamber atau Video
             $table->timestamps();

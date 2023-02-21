@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Repositories\ProdukRepository;
 use App\Models\Produk;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProdukRequest;
 use App\Http\Requests\UpdateProdukRequest;
-use App\Http\Controllers\Controller;
+use App\Http\Repositories\ProdukRepository;
 
 class ProdukController extends Controller
 {
@@ -26,7 +27,9 @@ class ProdukController extends Controller
     {
         $data = $this->repository->indexProduk();
 
-        return view('dashboard.produk.index');
+        return view('dashboard.produk.index', [
+            'datas' => $data,
+        ]);
     }
 
     /**
@@ -36,7 +39,10 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('dashboard.produk.create');
+        $data = $this->repository->createProduk();
+        return view('dashboard.produk.create', [
+            'datas' => $data,
+        ]);
     }
 
     /**
@@ -47,7 +53,11 @@ class ProdukController extends Controller
      */
     public function store(StoreProdukRequest $request)
     {
-        //
+        $data = $this->repository->storeProduk($request);
+
+        session()->flash('success', 'Produk berhasil ditambahkan');
+
+        return redirect()->route('produk.index');
     }
 
     /**
@@ -67,9 +77,14 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Produk $produk)
+    public function edit(Produk $id)
     {
-        //
+        $kategori = $this->repository->editProduk();
+        // dd($id->kategori->id);
+        return view('dashboard.produk.edit', [
+            'kategoris' => $kategori,
+            'data' => $id,
+        ]);
     }
 
     /**
@@ -79,9 +94,13 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProdukRequest $request, Produk $produk)
+    public function update(UpdateProdukRequest $request, $id)
     {
-        //
+        $data = $this->repository->updateProduk($request->all(), $id);
+
+        session()->flash('success', 'Produk berhasil diupdate');
+
+        return redirect()->route('produk.index');
     }
 
     /**
@@ -90,8 +109,15 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produk $produk)
+    public function destroy(Produk $id)
     {
-        //
+        if($id->file) {
+            Storage::delete($id->file);
+        }
+        Produk::destroy($id->id);
+
+        session()->flash('success', 'Produk berhasil dihapus');
+
+        return redirect()->route('produk.index');
     }
 }

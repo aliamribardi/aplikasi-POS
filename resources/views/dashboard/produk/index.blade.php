@@ -17,6 +17,12 @@
             </ol>
           </div>
         </div>
+        @if (session()->has('success'))
+        <div class="alert alert-info alert-block col-12">
+            <button type="button" class="close" data-dismiss="alert"><strong>x</strong></button>	
+            <strong>{{ session('success') }}</strong>
+        </div>
+        @endif
       </div><!-- /.container-fluid -->
     </section>
 
@@ -43,17 +49,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>image</td>
-                  <td>name</td>
-                  <td>Deskripsi</td>
-                  <td>Rp. 4000</td>
-                  <td style="width: 200px">
-                    <a href="" class="btn btn-outline-warning"><i class="las la-edit"></i></a> 
-                    <a href="" class="btn btn-outline-danger"><i class="las la-trash-alt"></i></a>
-                  </td>
-                </tr>
+                  @foreach ($datas as $data)
+                  <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                      <img src="{{ asset('storage/' . $data->file) }}" height="150px" alt="">
+                    </td>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ htmlspecialchars($data->deskripsi) }}</td>
+                    <td>Rp.{{ $data->harga }}</td>
+                    <td style="width: 200px">
+                      <a href="{{ Route('produk.edit', $data->id) }}" class="btn btn-outline-warning"><i class="las la-edit"></i></a> 
+                      <form action="{{ Route('produk.destroy', $data->id) }}" method="POST" class="d-inline">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-outline-danger"><i class="las la-trash-alt"></i></button>
+                    </form>
+                    </td>
+                  </tr>  
+                  @endforeach
                 
                 </tbody>
                 <tfoot>
