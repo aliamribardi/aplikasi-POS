@@ -35,15 +35,12 @@ class ProdukRepository extends BaseRepository
     public function storeProduk($request)
     {
         return DB::transaction(function () use ($request) {
-            if($request->file('file')) {
-                $file = $request->file('file')->store('Produk-file');
-            }
             $save = [
                 'name' => $request->name,
                 'id_kategori' => $request->id_kategori,
                 'harga' => $request->harga,
                 'deskripsi' => $request->deskripsi,
-                'file' => $file,
+                'file' => $request->file,
             ];
             $result = $this->store($save);
             return $result;
@@ -61,17 +58,14 @@ class ProdukRepository extends BaseRepository
     {
         return DB::transaction(function () use ($request, $id) {
             if($request['file']) {
-                if($request['oldFile']) {
-                    Storage::delete($request['oldFile']);
-                }
-                $file = $request['file']->store('Produk-file');
+                Storage::delete($request['oldFile']);
             }
             $save = [
                 'name' => $request['name'],
                 'id_kategori' => $request['id_kategori'],
                 'harga' => $request['harga'],
                 'deskripsi' => $request['deskripsi'],
-                'file' => $file,
+                'file' => $request['file'],
             ];
             $result = $this->update($save, $id);
             $dataResult = $this->produk->find($id);

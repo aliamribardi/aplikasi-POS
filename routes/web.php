@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
@@ -25,6 +26,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Upload File
+Route::post('upload-file', [FileController::class, 'upload'])->name('upload_file.upload');
 
 Route::get('produk', [ProdukController::class, 'index'])->name('produk.index');
 Route::get('produk/create', [ProdukController::class, 'create'])->name('produk.create');

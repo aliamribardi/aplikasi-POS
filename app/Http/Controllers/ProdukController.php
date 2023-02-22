@@ -80,7 +80,6 @@ class ProdukController extends Controller
     public function edit(Produk $id)
     {
         $kategori = $this->repository->editProduk();
-        // dd($id->kategori->id);
         return view('dashboard.produk.edit', [
             'kategoris' => $kategori,
             'data' => $id,
