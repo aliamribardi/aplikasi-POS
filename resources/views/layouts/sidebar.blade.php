@@ -24,7 +24,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -33,7 +33,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Dashboard v1</p>
                 </a>
@@ -54,29 +54,38 @@
           </li>
           <li class="nav-header">MASTER</li>
           <li class="nav-item">
-            <a href="{{ Route('produk.index') }}" class="nav-link">
+            <a href="{{ Route('produk.list') }}" class="{{ Request::is('list-produk*') ? 'nav-link active' : 'nav-link' }}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Produk List
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ Route('produk.index') }}" class="{{ Request::is('produk*') ? 'nav-link active' : 'nav-link' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Produk
-                <span class="right badge badge-danger">New</span>
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ Route('kategori.index') }}" class="nav-link">
+            <a href="{{ Route('kategori.index') }}" class="{{ Request::is('Kategori*') ? 'nav-link active' : 'nav-link' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Kategori
-                <span class="right badge badge-danger">New</span>
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ Route('pelanggan.index') }}" class="nav-link">
+            <a href="{{ Route('pelanggan.index') }}" class="{{ Request::is('pelanggan*') ? 'nav-link active' : 'nav-link' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Pelanggan
-                <span class="right badge badge-danger">New</span>
+                <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>
           </li>

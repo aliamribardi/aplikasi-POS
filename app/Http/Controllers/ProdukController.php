@@ -18,6 +18,13 @@ class ProdukController extends Controller
         $this->repository = $repository;
     }
 
+    public function produkList()
+    {
+        $products = $this->repository->indexProduk();
+
+        return view('dashboard.addToCart.index', compact('products'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -66,9 +73,11 @@ class ProdukController extends Controller
      * @param  \App\Models\Produk  $produk
      * @return \Illuminate\Http\Response
      */
-    public function show(Produk $produk)
+    public function show(Produk $id)
     {
-        //
+        return view('dashboard.addToCart.detail', [
+            'datas' => $id,
+        ]);
     }
 
     /**
