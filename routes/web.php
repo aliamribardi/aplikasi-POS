@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
@@ -72,3 +73,6 @@ Route::post('supplier/store', [SupplierController::class, 'store'])->name('suppl
 Route::get('supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
 Route::put('supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
 Route::delete('supplier/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
+
+// User
+Route::get('user', [UserController::class, 'index'])->name('user.index');

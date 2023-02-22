@@ -32,8 +32,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Daftar Pelanggan</h3>
-              <a href="" class="btn btn-outline-primary float-sm-right">Tambah</a>
+              <h3 class="card-title">Cart</h3>
+              <!-- <a href="" class="btn btn-outline-primary float-sm-right">Tambah</a> -->
             </div>  
             <!-- /.card-header -->
             <div class="card-body">
