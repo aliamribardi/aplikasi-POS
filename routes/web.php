@@ -7,6 +7,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\PelangganController;
 
 /*
@@ -63,3 +64,11 @@ Route::post('pelanggan/store', [PelangganController::class, 'store'])->name('pel
 Route::get('pelanggan/edit/{id}', [PelangganController::class, 'edit'])->name('pelanggan.edit');
 Route::put('pelanggan/update{id}', [PelangganController::class, 'update'])->name('pelanggan.update');
 Route::delete('pelanggan/destroy/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');
+
+// Supplier
+Route::get('supplier', [SupplierController::class, 'index'])->name('supplier.index');
+Route::get('supplier/create', [SupplierController::class, 'create'])->name('supplier.create');
+Route::post('supplier/store', [SupplierController::class, 'store'])->name('supplier.store');
+Route::get('supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
+Route::put('supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+Route::delete('supplier/destroy/{id}', [SupplierController::class, 'destroy'])->name('supplier.destroy');
