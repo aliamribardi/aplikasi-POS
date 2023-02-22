@@ -81,6 +81,8 @@
                 </tr>
                 </tfoot>
               </table>
+              <br>
+              {{ $datas->links() }}
             </div>
             <!-- /.card-body -->
           </div>

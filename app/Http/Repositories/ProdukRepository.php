@@ -22,7 +22,7 @@ class ProdukRepository extends BaseRepository
 
     public function indexProduk()
     {
-        $result = $this->produk->all();
+        $result = $this->produk->paginate(10);
         return $result;
     }
 

@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\ProdukController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PelangganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +39,10 @@ Route::post('Kategori/store', [KategoriController::class, 'store'])->name('kateg
 Route::get('Kategori/edit/{id}', [KategoriController::class, 'edit'])->name('kategori.edit');
 Route::put('Kategori/update/{id}', [KategoriController::class, 'update'])->name('kategori.update');
 Route::delete('Kategori/destroy/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
+
+Route::get('pelanggan', [PelangganController::class, 'index'])->name('pelanggan.index');
+Route::get('pelanggan/create', [PelangganController::class, 'create'])->name('pelanggan.create');
+Route::post('pelanggan/store', [PelangganController::class, 'store'])->name('pelanggan.store');
+Route::get('pelanggan/edit/{id}', [PelangganController::class, 'edit'])->name('pelanggan.edit');
+Route::put('pelanggan/update{id}', [PelangganController::class, 'update'])->name('pelanggan.update');
+Route::delete('pelanggan/destroy/{id}', [PelangganController::class, 'destroy'])->name('pelanggan.destroy');

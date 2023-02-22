@@ -52,6 +52,7 @@
               </li>
             </ul>
           </li>
+          <li class="nav-header">MASTER</li>
           <li class="nav-item">
             <a href="{{ Route('produk.index') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
@@ -66,6 +67,15 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Kategori
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ Route('pelanggan.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Pelanggan
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>

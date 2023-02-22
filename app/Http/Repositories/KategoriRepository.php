@@ -18,7 +18,7 @@ class KategoriRepository extends BaseRepository
 
     public function indexKategori()
     {
-        $result = $this->kategori->all();
+        $result = $this->kategori->paginate(10);
         return $result;
     }
 

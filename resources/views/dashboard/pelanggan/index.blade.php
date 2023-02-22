@@ -8,7 +8,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>DataTables</h1>
+            <h1>Data Pelanggan</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -32,8 +32,8 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Daftar Produk</h3>
-              <a href="{{ Route('kategori.create') }}" class="btn btn-outline-primary float-sm-right">Tambah Kategori</a>
+              <h3 class="card-title">Daftar Pelanggan</h3>
+              <a href="{{ Route('pelanggan.create') }}" class="btn btn-outline-primary float-sm-right">Tambah</a>
             </div>  
             <!-- /.card-header -->
             <div class="card-body">
@@ -41,7 +41,9 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Name Kategori</th>
+                  <th>Name </th>
+                  <th>Telepon </th>
+                  <th>Alamat </th>
                   <th>Action</th>
                 </tr>
                 </thead>
@@ -50,9 +52,11 @@
                 <tr>
                   <td>{{ $loop->iteration }}</td>
                   <td>{{ $data->name }}</td>
+                  <td>{{ $data->alamat }}</td>
+                  <td>{{ $data->telepon }}</td>
                   <td style="width: 200px">
-                    <a href="{{ Route('kategori.edit', $data->id) }}" class="btn btn-outline-warning"><i class="las la-edit"></i></a> 
-                    <form action="{{ Route('kategori.destroy', $data->id) }}" method="POST" class="d-inline">
+                    <a href="{{ Route('pelanggan.edit', $data->id) }}" class="btn btn-outline-warning"><i class="las la-edit"></i></a> 
+                    <form action="{{ Route('pelanggan.destroy', $data->id) }}" method="POST" class="d-inline">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-outline-danger"><i class="las la-trash-alt"></i></button>
@@ -65,7 +69,9 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Name Kategori</th>
+                  <th>Name</th>
+                  <th>Telepon</th>
+                  <th>Alamat</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
